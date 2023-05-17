@@ -1,0 +1,9 @@
+
+*.jar
+*.class
+*.pdf
+.metals
+.vscode
+
+# Project exclude paths
+/out/
