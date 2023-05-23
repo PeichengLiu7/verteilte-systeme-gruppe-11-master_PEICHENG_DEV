@@ -21,8 +21,14 @@ public class VSServer {
     public void start() throws IOException {
         while (true) {
             Socket socket = serverSocket.accept();
+            //监听客户端的请求，如果有客户端请求，就创建一个socket与客户端连接
             WorkerThread workerThread = new WorkerThread(socket);
+            //创建一个线程，这个线程的作用是，把客户端的请求转化为服务器的功能
+            //然后把服务器的功能的结果返回给客户端
+            //this thread is used to convert the request from the client to the function of the server
+            //and then return the result of the function to the client
             workerThread.start();
+            //启动这个线程
         }
     }
 
@@ -39,6 +45,11 @@ public class VSServer {
                 while (true) {
                     Object receivedObject = objectConnection.receiveObject();
                     objectConnection.sendObject((Serializable) receivedObject);
+                    //这个循环的作用是，服务器不断的接受客户端的请求，然后把客户端的请求转化为服务器的功能
+                    //然后把服务器的功能的结果返回给客户端
+                    //this is a loop, the server will keep receiving the request from the client
+                    //and then convert the request from the client to the function of the server
+                    //and then return the result of the function to the client
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

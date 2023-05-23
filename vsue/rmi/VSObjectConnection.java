@@ -1,4 +1,6 @@
 package vsue.rmi;
+import com.sun.corba.se.impl.protocol.giopmsgheaders.RequestMessage;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,6 +15,10 @@ public class VSObjectConnection {
 
     public VSObjectConnection(Socket socket) throws IOException {
         vsConnection = new VSConnection(socket);
+    }
+
+    public VSObjectConnection(String host, int port) {
+
     }
 
     public void sendObject(Serializable object) throws IOException {
@@ -56,6 +62,16 @@ public class VSObjectConnection {
         objectInputStream.close();
 
         return object;
+    }
+
+    public Object readObject() {
+        return null;
+    }
+
+    public void writeObject(RequestMessage request) {
+    }
+
+    public void close() {
     }
 }
 

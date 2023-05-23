@@ -1,7 +1,7 @@
 package vsue.rmi;
 
 
-public enum VSAuctionEventType {
+enum VSAuctionEventType {
 
 	/* Used by the service to notify a client that the client's bid
 	 * is no longer the highest bid for a particular auction. */
